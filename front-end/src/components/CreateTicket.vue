@@ -1,4 +1,5 @@
 <template>
+  <!-- example ticket model when create -->
   <div class="content-create-ticket">
     <TicketModel
       :title="ticketDetail.title"
@@ -7,6 +8,7 @@
       :contact="selectedContact"
       :time="null"
     />
+    <!-- form for create ticket -->
     <form>
       <div class="form-group mb-2">
         <label for="input-title">Title</label>
@@ -74,6 +76,7 @@ export default {
     };
   },
   methods: {
+    //methods for return emit
     filterSelected(select_status) {
       this.selectedStatus = select_status;
     },
@@ -87,6 +90,7 @@ export default {
     cancleCreate() {
       this.$emit("create-status", false);
     },
+    //get data from API
     getContact() {
       axios
         .get("http://localhost:3000/api/getContact")

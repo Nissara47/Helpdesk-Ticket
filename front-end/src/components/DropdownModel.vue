@@ -1,4 +1,5 @@
 <template>
+  <!-- dropdown -->
   <div class="dropdown">
     <button class="dropdown-toggle" data-bs-toggle="dropdown">
       {{ toggle }}

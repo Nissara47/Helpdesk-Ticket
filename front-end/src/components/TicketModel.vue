@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- all ticket information -->
     <div class="card mb-3">
       <div class="card-header">
         <b-icon :class="statusClass" icon="circle-fill"></b-icon
@@ -19,6 +20,7 @@
         </p>
       </div>
     </div>
+    <!-- edit ticket when click pencil button -->
     <div v-if="editTicket">
       <EditTicket
         @close-popup="closeEditTicket"
@@ -48,6 +50,7 @@ export default {
     };
   },
   methods: {
+    //methods for return emit
     showEditTicket() {
       this.editTicket = true;
     },
@@ -64,6 +67,7 @@ export default {
       }
       return "-";
     },
+    //get data from API
     getContact() {
       axios
         .get("http://localhost:3000/api/getContact")
@@ -80,6 +84,7 @@ export default {
     },
   },
   computed: {
+    //change color status
     statusClass() {
       return {
         "bi-circle-fill status-pending": this.status === "Pending",
