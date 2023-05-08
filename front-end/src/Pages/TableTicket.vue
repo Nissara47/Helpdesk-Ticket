@@ -1,7 +1,9 @@
 <template>
   <div>
+    <!-- header Page -->
     <h1 class="text-center mt-5 mb-5">Helpdesk Ticket</h1>
 
+    <!-- filter dropdown, clear filter, show create ticket -->
     <div class="content-filter mb-5">
       <div class="content-dropdown mx-3">
         <DropdownModel
@@ -28,10 +30,12 @@
       <button @click="show_create_ticket = true">Create Ticket</button>
     </div>
 
+    <!-- create ticket -->
     <div class="content-create mb-5" v-if="show_create_ticket">
       <CreateTicket @create-status="createStatus"></CreateTicket>
     </div>
 
+    <!-- show all ticket -->
     <div class="content-ticket mb-5">
       <div v-for="(ticket, index) in listTickets" :key="index">
         <TicketModel
@@ -70,6 +74,7 @@ export default {
     };
   },
   methods: {
+    //methods for emit
     filterSelected(select_filter) {
       this.selectedFilter = select_filter;
     },
@@ -92,6 +97,7 @@ export default {
         this.getTicket();
       }
     },
+    //get data from API
     getTicket() {
       axios
         .get("http://localhost:3000/api/getTicket")
